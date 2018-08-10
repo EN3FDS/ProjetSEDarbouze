@@ -40,7 +40,7 @@ public class Main extends Application {
 		 execute = new PC("Executeur");
 		
 		generateur.start();
-		execute.start();
-		launch(args);
+		//execute.start();
+		//launch(args);
 	}
 }
