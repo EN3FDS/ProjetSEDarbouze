@@ -4,7 +4,7 @@
 This program simulates the basic fonctionality of an operating system.
 
 
-The following features are implemented
+**The following features are implemented**
 * [X] A thread can generate process
 * [X] The process are placed in the memory by the MMU
 * [X] The process is executed by the CPU
