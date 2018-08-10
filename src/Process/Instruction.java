@@ -1,6 +1,8 @@
 package Process;
+import java.util.Random;
 
 public class Instruction {
+	Random rand = new Random();
 	private boolean interrupted; //dit si l'instruction genere une interruption ou pas
 	private byte address; //Adresse logique de l'instruction en question
 	private short typeOfInterruption;
@@ -21,6 +23,10 @@ public class Instruction {
 		return address;
 	}
 	
+	public short getTypeOfInterruption() {
+		typeOfInterruption = (short) rand.nextInt(5);
+		return typeOfInterruption;
+	}
 	public String toString() {
 		return "(Interrupted: " + interrupted + ", Address: " + address + ")";
 	}

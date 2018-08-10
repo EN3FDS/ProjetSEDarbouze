@@ -32,10 +32,11 @@ private static ArrayList<Process> ListOfProcess = new ArrayList<>();
 						
 				}
 				System.out.println(this.getName());
-			} catch (InterruptedException e) {
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				System.out.println("exception generated");
-				//e.printStackTrace();
+				e.printStackTrace();
+				
 			}
 			
 		}
