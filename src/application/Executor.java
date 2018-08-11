@@ -1,17 +1,13 @@
 package application;
 
 import java.util.ArrayList;
+import process.PCB;
+import process.Process;
 
-import Process.PCB;
-import Process.Process;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-
-public class PC extends Thread {
+public class Executor extends Thread {
 private static ArrayList<Process> ListOfProcess = new ArrayList<>();
 	
-	public PC(String string) {//executer un processus
+	public Executor(String string) {//executer un processus
 		// TODO Auto-generated constructor stub
 		super(string);
 	}

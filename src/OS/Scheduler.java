@@ -1,8 +1,10 @@
-package Process;
+package OS;
 
 
 import java.util.ArrayList;
 import java.util.PriorityQueue;
+
+import process.PCB;
 
 
 public class Scheduler {

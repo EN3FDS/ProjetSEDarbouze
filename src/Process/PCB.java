@@ -1,4 +1,4 @@
-package Process;
+package process;
 
 
 import java.time.Instant;
@@ -14,7 +14,7 @@ public class PCB implements Comparable<PCB> {
 	private Date DateCreated;
 	private byte addressIP;// recevra l'adresse de la prochaine instruction a executer 
 	private byte FinalAddress;//recevra l'adresse de la derniere instruction du programme 
-	private Process process;
+//	private Process process;
 	
 
 	//Create Constructors
@@ -22,7 +22,7 @@ public class PCB implements Comparable<PCB> {
 		this.pid = p.getId();
 		this.priority = priority;
 		this.DateCreated = Date.from(Instant.now());
-		this.process = p;
+//		this.process = p;
 	}
 	
 	//getter et setter

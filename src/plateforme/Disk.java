@@ -2,7 +2,7 @@ package plateforme;
 
 import java.util.ArrayList;
 
-import Process.Process;
+import process.Process;
 
 public class Disk {
 	

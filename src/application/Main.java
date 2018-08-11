@@ -1,15 +1,14 @@
 package application;
 	
+import OS.Scheduler;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import plateforme.memory;
+import process.ProcessGen;
 import plateforme.MMU;
 import plateforme.Disk;
-import Process.ProcessGen;
-import Process.Scheduler;
-import plateforme.CPU;
 
 public class Main extends Application {
 	
@@ -18,7 +17,7 @@ public class Main extends Application {
 	public static Scheduler scheduler= new Scheduler();
 	public static ProcessGen generateur;
 	public static Disk disk = new Disk();
-	public static PC execute;
+	public static Executor execute;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -37,7 +36,7 @@ public class Main extends Application {
 	//	Main.RAM.AddProcessToList(Main.disk.p1000);
 		
 		generateur = new ProcessGen("Generateur");
-		 execute = new PC("Executeur");
+		 execute = new Executor("Executeur");
 		
 		generateur.start();
 		//execute.start();

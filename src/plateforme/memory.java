@@ -1,7 +1,8 @@
 package plateforme;
 
 import java.util.ArrayList;
-import Process.Process;
+
+import process.Process;
 public class memory {
 	//definition de la taille de la memoire
 	
