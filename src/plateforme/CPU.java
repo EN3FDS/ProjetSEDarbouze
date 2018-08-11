@@ -2,11 +2,12 @@ package plateforme;
 
 //import Process.Scheduler;
 import application.Main;
-import Process.Instruction;
+import process.Instruction;
+import process.PCB;
+import process.Process;
+
 import java.util.ArrayList;
 import java.util.Random;
-import Process.PCB;
-import Process.Process;
 public class CPU {
 	
 		private int frequency;

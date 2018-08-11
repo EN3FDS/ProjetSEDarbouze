@@ -1,4 +1,4 @@
-package Process;
+package process;
 import java.util.Random;
 
 public class Instruction {
@@ -16,14 +16,16 @@ public class Instruction {
 	/*
 	 * Getters 
 	 */
-	public boolean isInterrupted() {
+	public boolean isInterrupted() { 
 		return interrupted;
 	}
 	public byte getAddress() {
 		return address;
 	}
 	
-	public short getTypeOfInterruption() {
+	/*Dis quel type dínterruption est generee
+	dependemment dy type, il sera géré de tel ou tel façon.*/
+	public short getTypeOfInterruption() { 
 		typeOfInterruption = (short) rand.nextInt(5);
 		return typeOfInterruption;
 	}

@@ -1,16 +1,14 @@
-package Process;
+package process;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Random;
 
 import application.Main;
-import plateforme.memory;
-import Process.Process;
-//import plateforme.Disk;
+import process.Process;
 
 public class ProcessGen extends Thread {
 	
-	private static ArrayList<Process> ListOfProcess = new ArrayList<>();
+//	private static ArrayList<Process> ListOfProcess = new ArrayList<>();
 	private Random rand= new Random();
 	int num;
 	//constructor
@@ -73,13 +71,15 @@ public class ProcessGen extends Thread {
 		
 	}
 	
-	private static void CreateAndAddPCB(Process p) {
+	//Adding the PCB to the memory
+	private static  void CreateAndAddPCB(Process p) {
 		PCB pcb = new PCB (p, p.getPriority()); 		
 		Main.mmu.allocateMemoryToProcess(p);
 		Main.scheduler.addPCBToProcessQueue(pcb);
 		Main.scheduler.addPCBToReadyQueue(pcb);		
 		
 	}
+}
 	
 /*	private static void Verification(int id,Process p) {		
 		int i=0;
@@ -107,5 +107,5 @@ public class ProcessGen extends Thread {
 	
 */
 
-}
+
 
