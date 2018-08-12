@@ -6,13 +6,13 @@ public class Process {
 	private int id;
 	private String nom;
 	private int size;
-	private int priority=1;
+	
 	private ArrayList<Instruction> instructions= new ArrayList<>();
 	//Constructor
-	public Process(int i, String s) {
-		this.id=i;
-		this.nom=s;
-		this.size = 72;
+	public Process(int i, String s,ArrayList<Instruction> instructions) {
+		this.id = i;
+		this.nom = s;
+		this.instructions = instructions;
 	}
 	public ArrayList<Instruction> getInstructions() {
 		return instructions;
@@ -30,9 +30,7 @@ public class Process {
 	public int getSize() {
 		return size;
 	}
-	public int getPriority() {
-		return priority;
-	}
+
 
 	
 	public String toString() {

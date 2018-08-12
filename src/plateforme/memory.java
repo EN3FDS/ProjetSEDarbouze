@@ -2,14 +2,21 @@ package plateforme;
 
 import java.util.ArrayList;
 
+import process.PCB;
 import process.Process;
+
 public class Memory {
 	//definition de la taille de la memoire
 	
-	private final static int taille = 1024; // taille en MB
+	private final static int taille = 1024*1024; // taille en MB
 	public ArrayList<Process> ListOfProcess = new ArrayList<>();
 	private static int NbreDePages = taille*1024/4; //la taille des pages est de 4k
 	private int tailleDispo=taille;
+	
+	/**
+	 * Current PCB this can be used to keep in touch with the process that is running
+	 */ 
+	public static PCB CUrrentPCB;
 
 	//getter
 	public int getTailleDispo() {
@@ -25,8 +32,8 @@ public class Memory {
 	}
 
 	/*
-		 * Getter et Setter de la liste de Process
-		 */
+	 * Getter et Setter de la liste de Process
+	 */
 
 
 	public ArrayList<Process> getListOfProcess() {

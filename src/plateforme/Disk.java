@@ -9,23 +9,18 @@ import process.File;
 
 public class Disk {
 	private static final int size = 10*1024*1024; // GB convertit en KB
-	private static int tailleOccupe;
+
 	private static int tailleDispo = size;
 	
 	public static ArrayList<File> fileOnDisk = new ArrayList<>();
 	
 	
-	public int getTailleOccupe() {
-		return tailleOccupe;
-	}
-	public void setTailleOccupe(int tailleOccupe) {
-		this.tailleOccupe = tailleOccupe;
-	}
+	
 	public int getTailleDispo() {
 		return tailleDispo;
 	}
-	public void setTailleDispo(int tailleDispo) {
-		this.tailleDispo = tailleDispo;
+	public static void setTailleDispo(int tailleDispo) {
+		tailleDispo = tailleDispo;
 	}
 	public int getSize() {
 		return size;
@@ -49,6 +44,7 @@ public class Disk {
 		}
 		AppFile OperatingSys = new AppFile(OS.rootFile,"OperatingSys",1000,instructions);
 		write(OperatingSys);
+		tailleDispo = tailleDispo - instructions.size();
 		
 	}
 
@@ -66,6 +62,7 @@ public class Disk {
 		}
 		AppFile MusicPlayer = new AppFile(OS.userFile,"MusicPlayer",20,instructions);
 		write(MusicPlayer);
+		tailleDispo = tailleDispo - instructions.size();
 		fileOnDisk.add(MusicPlayer);
 		
 		// Load Tetris
@@ -77,6 +74,7 @@ public class Disk {
 		}
 		AppFile Tetris = new AppFile(OS.userFile,"Tetris",10,instructions);
 		write(Tetris);
+		tailleDispo = tailleDispo - instructions.size();
 		fileOnDisk.add(Tetris);
 		
 		// Load Calculator
@@ -88,6 +86,7 @@ public class Disk {
 		}
 		AppFile Calculator = new AppFile(OS.userFile,"Calculator",10,instructions);
 		write(Calculator);
+		tailleDispo = tailleDispo - instructions.size();
 		fileOnDisk.add(Calculator);
 		
 		// Load Writer
@@ -99,6 +98,7 @@ public class Disk {
 		}
 		AppFile Writer = new AppFile(OS.userFile,"Writer",50,instructions);
 		write(Writer);
+		tailleDispo = tailleDispo - instructions.size();
 		fileOnDisk.add(Writer);
 
 		// Load FIFA
@@ -110,6 +110,7 @@ public class Disk {
 		}
 		AppFile FIFA = new AppFile(OS.userFile,"FIFA",100,instructions);
 		write(FIFA);
+		tailleDispo = tailleDispo - instructions.size();
 		fileOnDisk.add(FIFA);
 		
 	}

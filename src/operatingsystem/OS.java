@@ -24,6 +24,7 @@ public class OS extends Application {
 	public static ProcessGen generateur;
 	public static Disk disk = new Disk();
 	public static Executor execute;
+	public static int IDProcess = 1;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -37,9 +38,13 @@ public class OS extends Application {
 			e.printStackTrace();
 		}
 	}
+	private static void startup() {
+		disk.loadAppOnDisk();
+	}
 	
 	public static void main(String[] args) {
 	//	Main.RAM.AddProcessToList(Main.disk.p1000);
+		startup();
 		
 		generateur = new ProcessGen("Generateur");
 		 execute = new Executor("Executeur");

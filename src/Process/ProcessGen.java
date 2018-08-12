@@ -72,14 +72,7 @@ public class ProcessGen extends Thread {
 		
 	}
 	
-	//Adding the PCB to the memory
-	private static  void CreateAndAddPCB(Process p) {
-		PCB pcb = new PCB (p, p.getPriority()); 		
-		OS.mmu.allocateMemoryToProcess(p);
-		OS.scheduler.addPCBToProcessQueue(pcb);
-		OS.scheduler.addPCBToReadyQueue(pcb);		
-		
-	}
+
 }
 	
 /*	private static void Verification(int id,Process p) {		
