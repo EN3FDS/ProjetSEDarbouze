@@ -13,8 +13,8 @@ public class PCB implements Comparable<PCB> {
 	private int priority;
 	private Date DateCreated;
 	private byte addressIP;// recevra l'adresse de la prochaine instruction a executer 
-	private byte FinalAddress;//recevra l'adresse de la derniere instruction du programme 
-//	private Process process;
+	private byte finalAddress;//recevra l'adresse de la derniere instruction du programme 
+	private Process process;
 	
 
 	//Create Constructors
@@ -22,15 +22,16 @@ public class PCB implements Comparable<PCB> {
 		this.pid = p.getId();
 		this.priority = priority;
 		this.DateCreated = Date.from(Instant.now());
-//		this.process = p;
+		this.process = p;
+		this.finalAddress =(byte) ((byte) p.getInstructions().size()-1);
 	}
 	
 	//getter et setter
 	
-/*	public Process getProcess() {
+	public Process getProcess() {
 		System.out.println("get process");
 		return process;
-	}*/
+	}
 	public byte getAddressIP() { 
 		return addressIP;
 	}
@@ -40,9 +41,8 @@ public class PCB implements Comparable<PCB> {
 	}
 
 	public byte getFinalAddress() {
-		return FinalAddress;
+		return finalAddress;
 	}
-
 	
 	public Date getDateCreated() {
 		return DateCreated;
@@ -56,9 +56,7 @@ public class PCB implements Comparable<PCB> {
 	public int getPid() {
 		return pid;
 	}
-	/*public void setPid(int pid) {
-		this.pid = pid;
-	}*/
+
 	public int getPriority() {
 		return priority;
 	}

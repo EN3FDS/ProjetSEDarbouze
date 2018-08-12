@@ -1,33 +1,51 @@
 package plateforme;
 
 
-//import Process.Scheduler;
-import application.Main;
+import java.util.ArrayList;
+
+import operatingsystem.OS;
 import process.PCB;
 import process.Process;
 
 public class MMU {
 	
-	
-//	private final int nombrePage = memory.getNbreDePages();// nombre de pages existantes
-	//private  Pages[] tableDePage;//tableau de pages
-	
 	/**
 	 * Methode d'allocations et de desallocation de memoire
 	 **/
-	 public synchronized void allocateMemoryToProcess(Process process) {
-		 //
-		 //System.out.println("\tAncienne valeur de la memoire:"+Main.RAM.getTailleDispo());
+	 public synchronized void allocateMemoryToProcess(Process process,int priority) {
+		 
 		 int taille=  process.getSize();
-		 Main.RAM.setTailleDispo(Main.RAM.getTailleDispo()-taille);
-		 Main.RAM.AddProcessToList(process);
-		 PCB PCB = new PCB(process,2);
-		 Main.scheduler.addPCBToReadyQueue(PCB); 
-		 Main.scheduler.addPCBToProcessQueue(PCB);		 
-		 //System.out.println("Nouvelle valeur de la memoire:"+Main.RAM.getTailleDispo());
+		 //Diminution de la taille disponible dans la memoire
+		 OS.RAM.setTailleDispo(OS.RAM.getTailleDispo()-taille);
+		 
+		 //Création du PCB
+		 PCB PCB = new PCB(process , priority);
+		 
+		 //Ajouter le PCB dans les files concernées
+		 OS.scheduler.addPCBToReadyQueue(PCB); 
+		 OS.scheduler.addPCBToProcessQueue(PCB);
+		 
+		 //Ajouter le processus dans la liste des process sur le ram
+		 OS.RAM.ListOfProcess.add(process);
+		 
 
 	 }
 	 
+	 public synchronized void deallocateMemoryFromProcess(Process process) {
+		 int taille=  process.getSize();
+		 OS.RAM.setTailleDispo(OS.RAM.getTailleDispo()+taille);
+		 
+		 //Retirer le processus de la liste des processus de la liste
+		 ArrayList<Process> list = new ArrayList<>();
+			OS.RAM.ListOfProcess.forEach(data->{
+				if (data.getId() != process.getId()){
+					list.add(data);
+				}
+			});
+			OS.RAM.ListOfProcess = new ArrayList<>();
+			OS.RAM.ListOfProcess.addAll(list);
+		 
+	 }
 	 
 	
 

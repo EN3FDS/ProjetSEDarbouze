@@ -1,8 +1,9 @@
-package application;
+package operatingsystem;
 
 import java.util.ArrayList;
 import process.PCB;
 import process.Process;
+import operatingsystem.OS;
 
 public class Executor extends Thread {
 private static ArrayList<Process> ListOfProcess = new ArrayList<>();
@@ -15,11 +16,13 @@ private static ArrayList<Process> ListOfProcess = new ArrayList<>();
 		while(true) {
 			try {
 				Thread.sleep(1000);
-				PCB pcb = Main.scheduler.removePCBFromReadyQueue(); //on retire le pcb de la liste readyqueue
+				//on retire le pcb de la liste readyqueue
+				PCB pcb = OS.scheduler.removePCBFromReadyQueue(); 
 				System.out.println("ID du processus: "+ pcb.getPid());
-				//aff(pcb.getProcess().toString());
+				OS.RAM.currentPCB = pcb;
+				
 				int i;
-				ListOfProcess=Main.RAM.getListOfProcess(); //on prend la liste des processus deja sur la memoire
+				ListOfProcess=OS.RAM.getListOfProcess(); //on prend la liste des processus deja sur la memoire
 				for(i=0;i<ListOfProcess.size();i++) {
 					if (pcb.getPid()==ListOfProcess.get(i).getId()) { //prend le processus correspondant au PCB choisi
 						aff(ListOfProcess.get(i).toString());	//simulation d'execution a cet espace on fait appel au cpu
