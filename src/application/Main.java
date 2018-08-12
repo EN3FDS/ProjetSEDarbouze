@@ -5,7 +5,7 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import plateforme.memory;
+import plateforme.Memory;
 import process.ProcessGen;
 import plateforme.MMU;
 import plateforme.Disk;
@@ -13,7 +13,7 @@ import plateforme.Disk;
 public class Main extends Application {
 	
 	public static MMU mmu = new MMU();
-	public static memory RAM = new memory();
+	public static Memory RAM = new Memory();
 	public static Scheduler scheduler= new Scheduler();
 	public static ProcessGen generateur;
 	public static Disk disk = new Disk();

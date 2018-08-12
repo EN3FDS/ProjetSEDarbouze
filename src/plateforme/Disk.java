@@ -1,21 +1,28 @@
 package plateforme;
 
-import java.util.ArrayList;
-
-import process.Process;
 
 public class Disk {
+	private final int size = 100*1024*1024; // GB convertit en KB
+	private int tailleOccupe;
+	private int tailleDispo;
 	
-	public static ArrayList<Process> ListOfProcess = new ArrayList<>();
-	public Process p0= new Process(0,"Muzixmatch");
-	public Process p1= new Process(1,"Tetrix");
-	public Process p2= new Process(2,"FIFA");
-	public Process p3= new Process(3,"Calculator");
-	public Process p4= new Process(4,"OFfice Writer");
-	public Process p1000= new Process(1000,"Residuel");
 	
-	public void AddProcessToList(Process p){
-		ListOfProcess.add(p);
+	public int getTailleOccupe() {
+		return tailleOccupe;
+	}
+	public void setTailleOccupe(int tailleOccupe) {
+		this.tailleOccupe = tailleOccupe;
+	}
+	public int getTailleDispo() {
+		return tailleDispo;
+	}
+	public void setTailleDispo(int tailleDispo) {
+		this.tailleDispo = tailleDispo;
+	}
+	public int getSize() {
+		return size;
 	}
 
+	
+	
 }

@@ -19,7 +19,8 @@ public class ProcessGen extends Thread {
 	public int Genarate() {
 		return  rand.nextInt(5);
 	}
-	
+/*	
+ * on reformera cette methode pour qu'elle s'adapte a notre nouveau systeme de gestion des applications
 	public void witch_process(int a) {
 		switch (a) {
 		case 0:
@@ -28,7 +29,7 @@ public class ProcessGen extends Thread {
 			//aff(p0.toString());
 			break;
 		case 1:
-			//Verification(1,Main.disk.p1);
+			//Verification(1,Main.disk.p1); 
 			CreateAndAddPCB(Main.disk.p1);
 			//aff(p1.toString()); 
 			break;
@@ -48,7 +49,7 @@ public class ProcessGen extends Thread {
 			//aff(p4.toString());
 		}
 		
-	}
+	}*/
 	
 	public static void aff(String s) {
 		System.out.println(s);
@@ -60,7 +61,7 @@ public class ProcessGen extends Thread {
 				Thread.sleep(1000);
 				int k= Genarate();
 				System.out.println(this.getName());
-				witch_process(k);
+			//	witch_process(k);
 				
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

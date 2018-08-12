@@ -3,7 +3,7 @@ package plateforme;
 import java.util.ArrayList;
 
 import process.Process;
-public class memory {
+public class Memory {
 	//definition de la taille de la memoire
 	
 	private final static int taille = 1024; // taille en MB
