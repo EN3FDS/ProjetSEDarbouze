@@ -50,7 +50,7 @@ public class ProcessGen extends Thread {
 	}
 	
 	public void run() {
-		do {		
+		while(true) {		
 			if (OS.scheduler.getProcessQueue().size() == 5) {
 				try {
 					Thread.sleep(5000);
@@ -70,7 +70,7 @@ public class ProcessGen extends Thread {
 			}
 
 		}
-		while(true);
+		
 	}
 	
 

@@ -41,16 +41,18 @@ public class OS extends Application {
 		}
 	}
 	private static void startup() {
+		System.out.println("loading app");
 		disk.loadAppOnDisk();
 	}
 	
 	public static void main(String[] args) {
 	//	Main.RAM.AddProcessToList(Main.disk.p1000);
 		startup();
+		System.out.println("Finishing Loading App");
 		
 		generateur = new ProcessGen("Generateur");
 		 execute = new Executor("Executeur");
-		
+		 System.out.println("Launching threads");
 		generateur.start();
 		execute.start();
 		//launch(args);
