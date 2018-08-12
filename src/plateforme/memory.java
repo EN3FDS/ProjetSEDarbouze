@@ -16,7 +16,7 @@ public class Memory {
 	/**
 	 * Current PCB this can be used to keep in touch with the process that is running
 	 */ 
-	public static PCB CUrrentPCB;
+	public static PCB currentPCB;
 
 	//getter
 	public int getTailleDispo() {
@@ -40,12 +40,6 @@ public class Memory {
 		return ListOfProcess;
 	}
 	
-	//Methode pour ajouter un processus a la liste
-	
-	public void AddProcessToList (Process p) {
-		ListOfProcess.add(p);
-
-	}
 	/**
 	 * @return the taille
 	 */

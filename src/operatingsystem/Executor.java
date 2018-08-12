@@ -3,6 +3,7 @@ package operatingsystem;
 import java.util.ArrayList;
 import process.PCB;
 import process.Process;
+import operatingsystem.OS;
 
 public class Executor extends Thread {
 private static ArrayList<Process> ListOfProcess = new ArrayList<>();
@@ -15,9 +16,11 @@ private static ArrayList<Process> ListOfProcess = new ArrayList<>();
 		while(true) {
 			try {
 				Thread.sleep(1000);
-				PCB pcb = OS.scheduler.removePCBFromReadyQueue(); //on retire le pcb de la liste readyqueue
+				//on retire le pcb de la liste readyqueue
+				PCB pcb = OS.scheduler.removePCBFromReadyQueue(); 
 				System.out.println("ID du processus: "+ pcb.getPid());
-				//aff(pcb.getProcess().toString());
+				OS.RAM.currentPCB = pcb;
+				
 				int i;
 				ListOfProcess=OS.RAM.getListOfProcess(); //on prend la liste des processus deja sur la memoire
 				for(i=0;i<ListOfProcess.size();i++) {
