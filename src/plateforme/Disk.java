@@ -34,6 +34,23 @@ public class Disk {
 	public static void write(AppFile file) {
 			tailleDispo = tailleDispo - file.getInstructions().size();
 	}
+	
+	public void loadOS() {
+		ArrayList<Instruction> instructions = new ArrayList<>();
+		Random rand = new Random();
+		Instruction instruction;
+		
+		byte i;
+		// Load OperatingSys
+		//creation des instructions de l'app
+		for (i = 0; i < 15000 ; i++ ) {
+			instruction = new Instruction(false,i);
+			instructions.add(instruction);
+		}
+		AppFile OperatingSys = new AppFile(OS.rootFile,"OperatingSys",1000,instructions);
+		write(OperatingSys);
+		
+	}
 
 	public void loadAppOnDisk() {
 		ArrayList<Instruction> instructions = new ArrayList<>();
@@ -47,7 +64,7 @@ public class Disk {
 			instruction = new Instruction(rand.nextBoolean(),i);
 			instructions.add(instruction);
 		}
-		AppFile MusicPlayer = new AppFile(OS.userFile,"MusicPlayer",10,instructions);
+		AppFile MusicPlayer = new AppFile(OS.userFile,"MusicPlayer",20,instructions);
 		write(MusicPlayer);
 		fileOnDisk.add(MusicPlayer);
 		
@@ -80,7 +97,7 @@ public class Disk {
 			instruction = new Instruction(rand.nextBoolean(),i);
 			instructions.add(instruction);
 		}
-		AppFile Writer = new AppFile(OS.userFile,"Writer",10,instructions);
+		AppFile Writer = new AppFile(OS.userFile,"Writer",50,instructions);
 		write(Writer);
 		fileOnDisk.add(Writer);
 
@@ -91,7 +108,7 @@ public class Disk {
 			instruction = new Instruction(rand.nextBoolean(),i);
 			instructions.add(instruction);
 		}
-		AppFile FIFA = new AppFile(OS.userFile,"FIFA",10,instructions);
+		AppFile FIFA = new AppFile(OS.userFile,"FIFA",100,instructions);
 		write(FIFA);
 		fileOnDisk.add(FIFA);
 		
