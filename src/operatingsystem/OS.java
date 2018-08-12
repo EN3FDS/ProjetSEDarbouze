@@ -1,5 +1,6 @@
 package operatingsystem;
 	
+import interruption.SystemCall;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -24,6 +25,7 @@ public class OS extends Application {
 	public static ProcessGen generateur;
 	public static Disk disk = new Disk();
 	public static Executor execute;
+	public static SystemCall systemCall = new SystemCall();
 	public static int IDProcess = 1;
 
 	@Override
@@ -50,7 +52,7 @@ public class OS extends Application {
 		 execute = new Executor("Executeur");
 		
 		generateur.start();
-		//execute.start();
+		execute.start();
 		//launch(args);
 	}
 }

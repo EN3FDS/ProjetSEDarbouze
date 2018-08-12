@@ -7,11 +7,11 @@ import process.Process;
 
 public class SystemCall {
 
-/*
+
 	public SystemCall() {
 		// TODO Auto-generated constructor stub
 	}
-	
+/*	
 	public SystemCall(String name, short address) {
 		this.name=name;
 		this.address=address;

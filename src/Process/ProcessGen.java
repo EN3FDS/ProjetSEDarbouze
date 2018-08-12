@@ -19,57 +19,58 @@ public class ProcessGen extends Thread {
 	public int Genarate() {
 		return  rand.nextInt(5);
 	}
-/*	
- * on reformera cette methode pour qu'elle s'adapte a notre nouveau systeme de gestion des applications
-	public void witch_process(int a) {
+	
+ 	public void witch_process(int a) {
 		switch (a) {
 		case 0:
-			//Verification(0,Main.disk.p0);
-			CreateAndAddPCB(Main.disk.p0);
-			//aff(p0.toString());
+			//AppelSystem
+			OS.systemCall.makeSystemCall(a, 1);
 			break;
 		case 1:
-			//Verification(1,Main.disk.p1); 
-			CreateAndAddPCB(Main.disk.p1);
-			//aff(p1.toString()); 
+			//AppelSystem 
+			OS.systemCall.makeSystemCall(a, 1);
 			break;
 		case 2:
-			//Verification(2,Main.disk.p2);
-			CreateAndAddPCB(Main.disk.p2);
-			//aff(p2.toString());
+			//AppelSystem
+			OS.systemCall.makeSystemCall(a, 1);
 			break;
 		case 3:
-			//Verification(3,Main.disk.p3);
-			CreateAndAddPCB(Main.disk.p3);
-			//aff(p3.toString());
+			//AppelSystem
+			OS.systemCall.makeSystemCall(a, 1);
 			break;
 		case 4:
-			//Verification(4,Main.disk.p4);
-			CreateAndAddPCB(Main.disk.p4);
-			//aff(p4.toString());
+			//AppelSystem
+			OS.systemCall.makeSystemCall(a, 1);
 		}
 		
-	}*/
+	}
 	
 	public static void aff(String s) {
 		System.out.println(s);
 	}
 	
 	public void run() {
-		for (int i=1;i<6;i++) {
-			try {
-				Thread.sleep(1000);
-				int k= Genarate();
-				System.out.println(this.getName());
-			//	witch_process(k);
-				
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		do {		
+			if (OS.scheduler.getProcessQueue().size() == 5) {
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}else if (OS.scheduler.getProcessQueue().size() < 5){
+				try {
+					Thread.sleep(1000);
+					int k= Genarate();
+					witch_process(k);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			
+
 		}
-		
+		while(true);
 	}
 	
 

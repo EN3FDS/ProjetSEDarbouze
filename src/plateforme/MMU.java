@@ -1,6 +1,8 @@
 package plateforme;
 
 
+import java.util.ArrayList;
+
 import operatingsystem.OS;
 import process.PCB;
 import process.Process;
@@ -21,7 +23,10 @@ public class MMU {
 		 
 		 //Ajouter le PCB dans les files concernées
 		 OS.scheduler.addPCBToReadyQueue(PCB); 
-		 OS.scheduler.addPCBToProcessQueue(PCB);		 
+		 OS.scheduler.addPCBToProcessQueue(PCB);
+		 
+		 //Ajouter le processus dans la liste des process sur le ram
+		 OS.RAM.ListOfProcess.add(process);
 		 
 
 	 }
@@ -29,6 +34,17 @@ public class MMU {
 	 public synchronized void deallocateMemoryFromProcess(Process process) {
 		 int taille=  process.getSize();
 		 OS.RAM.setTailleDispo(OS.RAM.getTailleDispo()+taille);
+		 
+		 //Retirer le processus de la liste des processus de la liste
+		 ArrayList<Process> list = new ArrayList<>();
+			OS.RAM.ListOfProcess.forEach(data->{
+				if (data.getId() != process.getId()){
+					list.add(data);
+				}
+			});
+			OS.RAM.ListOfProcess = new ArrayList<>();
+			OS.RAM.ListOfProcess.addAll(list);
+		 
 	 }
 	 
 	
