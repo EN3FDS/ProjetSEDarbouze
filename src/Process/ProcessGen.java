@@ -3,7 +3,7 @@ package process;
 //import java.util.ArrayList;
 import java.util.Random;
 
-import application.Main;
+import operatingsystem.OS;
 import process.Process;
 
 public class ProcessGen extends Thread {
@@ -75,9 +75,9 @@ public class ProcessGen extends Thread {
 	//Adding the PCB to the memory
 	private static  void CreateAndAddPCB(Process p) {
 		PCB pcb = new PCB (p, p.getPriority()); 		
-		Main.mmu.allocateMemoryToProcess(p);
-		Main.scheduler.addPCBToProcessQueue(pcb);
-		Main.scheduler.addPCBToReadyQueue(pcb);		
+		OS.mmu.allocateMemoryToProcess(p);
+		OS.scheduler.addPCBToProcessQueue(pcb);
+		OS.scheduler.addPCBToReadyQueue(pcb);		
 		
 	}
 }

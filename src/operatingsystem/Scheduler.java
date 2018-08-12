@@ -1,4 +1,4 @@
-package OS;
+package operatingsystem;
 
 
 import java.util.ArrayList;

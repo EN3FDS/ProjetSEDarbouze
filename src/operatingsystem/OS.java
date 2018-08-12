@@ -1,16 +1,22 @@
-package application;
+package operatingsystem;
 	
-import OS.Scheduler;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import plateforme.Memory;
+import process.File;
 import process.ProcessGen;
+
 import plateforme.MMU;
 import plateforme.Disk;
 
-public class Main extends Application {
+public class OS extends Application {
+	// fichier root
+	public static File rootFile = new File(null, "root", true);
+	// fichier user
+	public static File userFile = new File(rootFile, "user", true);
+
 	
 	public static MMU mmu = new MMU();
 	public static Memory RAM = new Memory();

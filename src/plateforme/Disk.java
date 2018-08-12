@@ -1,10 +1,18 @@
 package plateforme;
+import java.util.ArrayList;
+import java.util.Random;
 
+import operatingsystem.OS;
+import process.Instruction;
+import process.AppFile;
+import process.File;
 
 public class Disk {
-	private final int size = 100*1024*1024; // GB convertit en KB
-	private int tailleOccupe;
-	private int tailleDispo;
+	private static final int size = 10*1024*1024; // GB convertit en KB
+	private static int tailleOccupe;
+	private static int tailleDispo = size;
+	
+	public static ArrayList<File> fileOnDisk = new ArrayList<>();
 	
 	
 	public int getTailleOccupe() {
@@ -22,7 +30,71 @@ public class Disk {
 	public int getSize() {
 		return size;
 	}
-
 	
+	public static void write(AppFile file) {
+			tailleDispo = tailleDispo - file.getInstructions().size();
+	}
+
+	public void loadAppOnDisk() {
+		ArrayList<Instruction> instructions = new ArrayList<>();
+		Random rand = new Random();
+		Instruction instruction;
+		
+		byte i;
+		// Load MuzixPlayer
+		//creation des instructions de l'app
+		for (i = 0; i < 1500 ; i++ ) {
+			instruction = new Instruction(rand.nextBoolean(),i);
+			instructions.add(instruction);
+		}
+		AppFile MusicPlayer = new AppFile(OS.userFile,"MusicPlayer",10,instructions);
+		write(MusicPlayer);
+		fileOnDisk.add(MusicPlayer);
+		
+		// Load Tetris
+		//creation des instructions de l'app
+		instructions = new ArrayList<>(); //reinitialisation de lárraylist des instructions
+		for (i = 0; i < 2000 ; i++ ) {
+			instruction = new Instruction(rand.nextBoolean(),i);
+			instructions.add(instruction);
+		}
+		AppFile Tetris = new AppFile(OS.userFile,"Tetris",10,instructions);
+		write(Tetris);
+		fileOnDisk.add(Tetris);
+		
+		// Load Calculator
+		//creation des instructions de l'app
+		instructions = new ArrayList<>(); //reinitialisation de lárraylist des instructions
+		for (i = 0; i < 1000 ; i++ ) {
+			instruction = new Instruction(rand.nextBoolean(),i);
+			instructions.add(instruction);
+		}
+		AppFile Calculator = new AppFile(OS.userFile,"Calculator",10,instructions);
+		write(Calculator);
+		fileOnDisk.add(Calculator);
+		
+		// Load Writer
+		//creation des instructions de l'app
+		instructions = new ArrayList<>(); //reinitialisation de lárraylist des instructions
+		for (i = 0; i < 3000 ; i++ ) {
+			instruction = new Instruction(rand.nextBoolean(),i);
+			instructions.add(instruction);
+		}
+		AppFile Writer = new AppFile(OS.userFile,"Writer",10,instructions);
+		write(Writer);
+		fileOnDisk.add(Writer);
+
+		// Load FIFA
+		//creation des instructions de l'app
+		instructions = new ArrayList<>(); //reinitialisation de lárraylist des instructions
+		for (i = 0; i < 7000 ; i++ ) {
+			instruction = new Instruction(rand.nextBoolean(),i);
+			instructions.add(instruction);
+		}
+		AppFile FIFA = new AppFile(OS.userFile,"FIFA",10,instructions);
+		write(FIFA);
+		fileOnDisk.add(FIFA);
+		
+	}
 	
 }

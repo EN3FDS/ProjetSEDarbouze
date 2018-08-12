@@ -1,8 +1,7 @@
 package plateforme;
 
 
-//import Process.Scheduler;
-import application.Main;
+import operatingsystem.OS;
 import process.PCB;
 import process.Process;
 
@@ -19,11 +18,11 @@ public class MMU {
 		 //
 		 //System.out.println("\tAncienne valeur de la memoire:"+Main.RAM.getTailleDispo());
 		 int taille=  process.getSize();
-		 Main.RAM.setTailleDispo(Main.RAM.getTailleDispo()-taille);
-		 Main.RAM.AddProcessToList(process);
+		 OS.RAM.setTailleDispo(OS.RAM.getTailleDispo()-taille);
+		 OS.RAM.AddProcessToList(process);
 		 PCB PCB = new PCB(process,2);
-		 Main.scheduler.addPCBToReadyQueue(PCB); 
-		 Main.scheduler.addPCBToProcessQueue(PCB);		 
+		 OS.scheduler.addPCBToReadyQueue(PCB); 
+		 OS.scheduler.addPCBToProcessQueue(PCB);		 
 		 //System.out.println("Nouvelle valeur de la memoire:"+Main.RAM.getTailleDispo());
 
 	 }
