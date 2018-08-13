@@ -53,6 +53,7 @@ public class ProcessGen extends Thread {
 		while(true) {		
 			if (OS.scheduler.getProcessQueue().size() == 5) {
 				try {
+					System.out.println("###########queue pleine###########");
 					Thread.sleep(5000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
@@ -60,10 +61,10 @@ public class ProcessGen extends Thread {
 				}
 			}else if (OS.scheduler.getProcessQueue().size() < 5){
 				try {
-					Thread.sleep(1000);
+					//Thread.sleep(1000);
 					int k= Genarate();
 					witch_process(k);
-				} catch (InterruptedException e) {
+				} catch (/*Interrupted*/Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}

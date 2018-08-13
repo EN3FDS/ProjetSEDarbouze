@@ -41,7 +41,7 @@ public class Scheduler {
 	}
 	// Enlever un element de la liste ProcessQUEUE
 	
-	public synchronized void remevePCBFromProcessQueue(PCB pcb) {
+	public synchronized void removePCBFromProcessQueue(PCB pcb) {
 		ArrayList<PCB> list = new ArrayList<>();
 		processQueue.forEach(data->{
 			if (data.getPid() != pcb.getPid()){

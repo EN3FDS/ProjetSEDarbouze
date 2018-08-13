@@ -16,7 +16,7 @@ public class Memory {
 	/**
 	 * Current PCB this can be used to keep in touch with the process that is running
 	 */ 
-	public static PCB currentPCB;
+	public PCB currentPCB;
 
 	//getter
 	public int getTailleDispo() {
