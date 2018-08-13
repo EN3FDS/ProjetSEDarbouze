@@ -41,12 +41,13 @@ public class SystemCall {
 		switch (i){
 		case 0: 
 			//Kill a Process			
-			OS.mmu.deallocateMemoryFromProcess(OS.RAM.currentPCB.getProcess());		
+			OS.mmu.deallocateMemoryFromProcess(OS.RAM.currentPCB.getProcess());	
+			OS.scheduler.removePCBFromProcessQueue(OS.RAM.currentPCB);
 			break;
 			
 		case 1: 
 			try {
-				System.out.println("SyctemCall generated");
+				//System.out.println("SyctemCall generated");
 				//generate process from application on disk
 				AppFile appFile = (AppFile) Disk.fileOnDisk.get(numApp);
 				Process p = new Process(OS.IDProcess,appFile.getName(),appFile.getInstructions());

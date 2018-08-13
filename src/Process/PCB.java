@@ -12,7 +12,7 @@ public class PCB implements Comparable<PCB> {
 	private String status;
 	private int priority;
 	private Date DateCreated;
-	private byte addressIP;// recevra l'adresse de la prochaine instruction a executer 
+	private byte addressIP = 0;// recevra l'adresse de la prochaine instruction a executer 
 	private byte finalAddress;//recevra l'adresse de la derniere instruction du programme 
 	private Process process;
 	
@@ -29,7 +29,6 @@ public class PCB implements Comparable<PCB> {
 	//getter et setter
 	
 	public Process getProcess() {
-		System.out.println("get process");
 		return process;
 	}
 	public byte getAddressIP() { 
