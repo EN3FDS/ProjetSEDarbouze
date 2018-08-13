@@ -4,13 +4,18 @@ import interruption.SystemCall;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import plateforme.Memory;
 import process.File;
 import process.ProcessGen;
 
 import plateforme.MMU;
 import plateforme.Disk;
+import view.Graphic;
+import process.Process;
 
 public class OS extends Application {
 	// fichier root
@@ -27,21 +32,40 @@ public class OS extends Application {
 	public static Executor execute;
 	public static SystemCall systemCall = new SystemCall();
 	public static int IDProcess = 1;
+        public static MenuBar menubar;
+        public static TableView<Process> table;
+        
+        
 
 	@Override
 	public void start(Stage primaryStage) {
+            // System.out.println("hello");
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
+                    System.out.println("hello");
+                    primaryStage.setTitle("LALA-OS");
+			BorderPane root = new BorderPane(); 
+			Scene scene = new Scene(root,800,550, Color.WHITESMOKE);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.show();
+                  
+                        /***********MENU**********/
+                        
+                        menubar = new MenuBar(); 
+                        menubar = Graphic.menu();
+                        root.setTop(menubar);
+                        primaryStage.show();
+                        
+                        table = new TableView<>();
+                        table = Graphic.tabview();
+                        root.setRight(table);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	private static void startup() {
+            
 		System.out.println("loading app");
+               //  System.out.println("hello");
 		disk.loadAppOnDisk();
 	}
 	
@@ -55,6 +79,7 @@ public class OS extends Application {
 		 System.out.println("Launching threads");
 		generateur.start();
 		execute.start();
-		//launch(args);
+                launch(args);
+		
 	}
 }
